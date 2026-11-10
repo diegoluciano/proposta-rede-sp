@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Proposta de redesenho do site da Rede São Paulo de Supermercados.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>body{margin:0}img,svg{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Proposta Rede São Paulo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: one dark editorial column (Diego's identity) with a cream "cupom fiscal" as the investment summary. */
+:root {
+  --bg: #05070a;
+  --bg-soft: #0b0f14;
+  --ink: #f4efe1;
+  --muted: rgba(244, 239, 225, 0.68);
+  --muted-2: rgba(244, 239, 225, 0.42);
+  --accent: #28f2a4;
+  --accent-dim: rgba(40, 242, 164, 0.14);
+  --line: rgba(244, 239, 225, 0.14);
+  --paper: #f4efe1;
+  --paper-ink: #11151a;
+  --paper-muted: #5c5f63;
+  --c-confianca: #7aa8ff;
+  --c-lopes: #f2b84b;
+  --c-pague: #ff7a6b;
+  --c-shibata: #c49bff;
+  --c-comper: #28f2a4;
+  --font-display: "Google Sans", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-body: "Google Sans", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --col: 1120px;
+  --text: 64ch;
+  color-scheme: dark;
+}
+html { background: var(--bg); }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+* { box-sizing: border-box; }
+a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.wrap {
+  max-width: var(--col);
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) {
+  .wrap { padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); }
+}
+
+/* Top bar */
+.top { border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
+.logo { display: block; width: 64px; height: auto; color: var(--ink); }
+.top__meta { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); display: flex; gap: 18px; flex-wrap: wrap; }
+.top__meta b { color: var(--ink); font-weight: 500; }
+
+/* Section rhythm */
+section { padding-block: clamp(56px, 9vw, 104px); border-bottom: 1px solid var(--line); }
+.eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 18px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.3rem, 6.2vw, 4.6rem); line-height: 1.02; font-weight: 500; max-width: 17ch; }
+h2 { font-size: clamp(1.8rem, 3.8vw, 2.8rem); line-height: 1.08; font-weight: 500; max-width: 22ch; }
+h3 { font-size: 1.2rem; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; }
+p { margin: 0; }
+.lead { font-size: clamp(1.1rem, 1.8vw, 1.3rem); color: var(--muted); max-width: var(--text); }
+.section-head { display: grid; gap: 18px; margin-bottom: clamp(36px, 5vw, 56px); }
+.section-head p { color: var(--muted); max-width: var(--text); }
+
+/* Hero */
+.hero { padding-block: clamp(56px, 10vw, 120px) clamp(48px, 7vw, 80px); }
+.hero__to { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); margin-bottom: 28px; letter-spacing: 0.04em; }
+.hero__to b { color: var(--ink); font-weight: 500; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { margin-top: 28px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(44px, 6vw, 72px); border-top: 1px solid var(--line); }
+.stat { padding: 22px 20px 0 0; display: grid; gap: 6px; min-width: 0; }
+.stat + .stat { padding-left: 20px; border-left: 1px solid var(--line); }
+.stat__n { font-family: var(--font-display); font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat__l { font-size: 0.9rem; color: var(--muted); }
+.source { margin-top: 22px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted-2); letter-spacing: 0.02em; }
+@media (max-width: 720px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--line); margin-top: 22px; }
+}
+
+/* Diagnosis */
+.issues { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.issue { background: var(--bg); padding: 26px 24px 28px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.issue p { color: var(--muted); font-size: 0.98rem; }
+.issue__tag { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-2); }
+@media (max-width: 900px) { .issues { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .issues { grid-template-columns: 1fr; } }
+
+/* Sitemap */
+.sitemap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.node { border: 1px solid var(--line); border-radius: 10px; padding: 16px 16px 18px; display: grid; gap: 6px; align-content: start; min-width: 0; background: var(--bg-soft); }
+.node__name { font-weight: 600; }
+.node__desc { color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+.node--new { border-color: var(--accent); background: var(--accent-dim); }
+.node--new .node__name::after { content: "novo"; margin-left: 8px; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); vertical-align: 2px; }
+.node--home { grid-column: 1 / -1; }
+.node--home .node__desc { max-width: 80ch; }
+.subs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.subs span { font-size: 0.78rem; padding: 2px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); }
+@media (max-width: 900px) { .sitemap { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .sitemap { grid-template-columns: 1fr; } }
+
+.features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 4vw, 48px) clamp(28px, 5vw, 64px); margin-top: clamp(48px, 6vw, 72px); }
+.feature { display: grid; gap: 10px; min-width: 0; }
+.feature p { color: var(--muted); }
+@media (max-width: 640px) { .features { grid-template-columns: 1fr; } }
+
+/* Map */
+.map-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.map-figure { margin: 0; min-width: 0; }
+.map-figure svg { display: block; width: 100%; height: auto; max-width: 560px; }
+.map-figure figcaption { margin-top: 14px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted-2); line-height: 1.5; }
+.legend { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 10px; }
+.legend li { display: grid; grid-template-columns: 12px 1fr auto; gap: 12px; align-items: center; font-size: 0.98rem; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.legend i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+.legend b { font-family: var(--font-mono); font-weight: 500; font-variant-numeric: tabular-nums; }
+.legend .off { color: var(--muted-2); }
+.map-copy p + p { margin-top: 16px; }
+.map-copy p { color: var(--muted); }
+.map-copy p strong { color: var(--ink); font-weight: 600; }
+@media (max-width: 820px) { .map-grid { grid-template-columns: 1fr; } }
+
+/* Tech */
+.tech { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 4vw, 48px); }
+.tech > div { display: grid; gap: 10px; align-content: start; border-top: 1px solid var(--ink); padding-top: 18px; min-width: 0; }
+.tech p { color: var(--muted); }
+@media (max-width: 760px) { .tech { grid-template-columns: 1fr; } }
+
+/* Investment */
+.invest { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: start; }
+.stages { display: grid; gap: 14px; }
+.stage { border: 1px solid var(--line); border-radius: 10px; background: var(--bg-soft); overflow: hidden; }
+.stage summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 18px 20px; align-items: baseline; }
+.stage summary::-webkit-details-marker { display: none; }
+.stage summary h3 { font-size: 1.05rem; }
+.stage summary h3::before { content: "+"; display: inline-block; width: 1.1em; color: var(--accent); font-family: var(--font-mono); font-weight: 500; }
+.stage[open] summary h3::before { content: "−"; }
+.stage__sum { font-family: var(--font-mono); font-size: 0.88rem; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--ink); }
+.stage__sum span { color: var(--muted); margin-right: 10px; }
+.stage__why { grid-column: 1 / -1; color: var(--muted); font-size: 0.92rem; padding-left: 1.1em; }
+.tasks { width: 100%; border-collapse: collapse; font-size: 0.94rem; }
+.tasks td { padding: 10px 20px; border-top: 1px solid var(--line); vertical-align: top; }
+.tasks td:last-child { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; width: 5.5em; }
+
+.receipt-wrap { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); }
+.receipt {
+  background: var(--paper); color: var(--paper-ink); font-family: var(--font-mono); font-size: 0.86rem; line-height: 1.55;
+  padding: 30px 26px 34px;
+  --zz: 10px;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--zz) 51% repeat-x, conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--zz) 51% repeat-x;
+  mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / var(--zz) 51% repeat-x, conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) top / var(--zz) 51% repeat-x;
+}
+.receipt__head { text-align: center; display: grid; gap: 2px; padding-bottom: 14px; border-bottom: 1px dashed var(--paper-muted); }
+.receipt__head strong { font-size: 0.95rem; letter-spacing: 0.08em; }
+.receipt__head span { color: var(--paper-muted); font-size: 0.76rem; }
+.receipt-wrap, .stages { min-width: 0; }
+.receipt__rows { list-style: none; margin: 0; padding: 14px 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; border-bottom: 1px dashed var(--paper-muted); }
+.receipt__rows li { min-width: 0; display: flex; gap: 8px; align-items: baseline; font-variant-numeric: tabular-nums; }
+.receipt__rows li .d { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; }
+.receipt__rows li .d::after { content: " ........................................................................"; color: var(--paper-muted); }
+.receipt__rows li .h { color: var(--paper-muted); white-space: nowrap; }
+.receipt__rows li .v { white-space: nowrap; text-align: right; min-width: 7.5ch; }
+.receipt__total { padding-top: 14px; display: grid; gap: 4px; }
+.receipt__total .row { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
+.receipt__total .big { font-size: 1.45rem; font-weight: 600; letter-spacing: -0.01em; padding-top: 6px; }
+.receipt__total .small { color: var(--paper-muted); font-size: 0.78rem; }
+.receipt__foot { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--paper-muted); text-align: center; color: var(--paper-muted); font-size: 0.74rem; }
+.barcode { height: 34px; margin: 12px auto 0; max-width: 220px; background: repeating-linear-gradient(90deg, var(--paper-ink) 0 2px, transparent 2px 4px, var(--paper-ink) 4px 5px, transparent 5px 8px, var(--paper-ink) 8px 11px, transparent 11px 12px); }
+@media (max-width: 900px) { .invest { grid-template-columns: 1fr; } .receipt-wrap { position: static; max-width: 440px; } }
+
+.extras-title { margin: clamp(48px, 6vw, 64px) 0 16px; }
+.extras { width: 100%; border-collapse: collapse; }
+.extras th { text-align: left; font-family: var(--font-mono); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-2); padding: 0 16px 10px 0; }
+.extras td { padding: 16px 16px 16px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.extras td:first-child { min-width: 11em; }
+@media (max-width: 480px) { .extras td.num, .extras th.num { padding-left: 10px; font-size: 0.85rem; } }
+.extras td small { display: block; color: var(--muted); font-size: 0.88rem; margin-top: 4px; line-height: 1.45; }
+.extras td.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; padding-right: 0; }
+.extras th.num { text-align: right; padding-right: 0; }
+.table-scroll { overflow-x: auto; }
+
+/* Timeline */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; counter-reset: s; }
+.timeline li { border-top: 2px solid var(--line); padding: 18px 18px 0 0; display: grid; gap: 6px; align-content: start; min-width: 0; position: relative; }
+.timeline li::before { content: ""; position: absolute; top: -6px; left: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.timeline .wk { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.timeline p { color: var(--muted); font-size: 0.93rem; }
+.note { margin-top: 28px; color: var(--muted); font-size: 0.95rem; max-width: var(--text); }
+@media (max-width: 860px) {
+  .timeline { grid-template-columns: 1fr; gap: 0; }
+  .timeline li { border-top: 0; border-left: 2px solid var(--line); padding: 0 0 26px 22px; }
+  .timeline li::before { top: 2px; left: -6px; }
+}
+
+/* Terms + checklist */
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(36px, 6vw, 80px); }
+.terms { display: grid; gap: 0; margin: 0; }
+.terms div { display: grid; grid-template-columns: 10em 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
+.terms dt { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted-2); padding-top: 3px; }
+.terms dd { margin: 0; min-width: 0; }
+.terms dd small { display: block; color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; }
+.checklist li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
+.checklist li::before { content: ""; width: 14px; height: 14px; border: 1.5px solid var(--muted); border-radius: 3px; margin-top: 5px; }
+.checklist li span { color: var(--muted); display: block; font-size: 0.9rem; }
+.col-title { margin-bottom: 18px; }
+@media (max-width: 760px) { .two { grid-template-columns: 1fr; } .terms div { grid-template-columns: 1fr; gap: 4px; } }
+
+/* About + footer */
+.about { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.about .logo-lg { width: clamp(96px, 14vw, 150px); color: var(--ink); }
+.about p { color: var(--muted); max-width: var(--text); }
+.about p + p { margin-top: 14px; }
+.contact { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 28px; font-family: var(--font-mono); font-size: 0.9rem; }
+.contact span { color: var(--muted-2); margin-right: 8px; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.08em; }
+.cta { display: inline-flex; align-items: center; gap: 10px; margin-top: 36px; padding: 14px 22px; border: 1px solid var(--accent); border-radius: 999px; color: var(--ink); text-decoration: none; font-weight: 500; background: var(--accent-dim); transition: background-color 0.2s ease; }
+.cta:hover { background: rgba(40, 242, 164, 0.26); color: var(--ink); }
+footer { padding-block: 28px 40px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted-2); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 560px) { .about { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .dot { transition: opacity 0.2s ease; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <svg class="logo" viewBox="12 27 75 46" role="img" aria-label="DHL, Diego Henrique Luciano"><g fill="currentColor" transform="translate(14.0404 71.1653) scale(0.053313 -0.053313)"><path transform="translate(0,0)" d="M141 32Q141 41 147.5 48.0Q154 55 154 63Q154 65 150.0 68.0Q146 71 145 72Q135 87 134.0 106.0Q133 125 133 142Q133 234 134.0 324.0Q135 414 135 506Q125 506 116.0 501.5Q107 497 97.0 491.5Q87 486 76.0 481.5Q65 477 52 477H36Q34 480 26.0 482.5Q18 485 18 489V519Q23 522 26.5 527.5Q30 533 32 537L133 587L137 592Q135 620 140.0 637.0Q145 654 175 654Q183 654 192.5 651.0Q202 648 210.5 643.0Q219 638 223.5 630.0Q228 622 226 612Q276 610 325.0 604.5Q374 599 413.0 580.5Q452 562 476.5 526.0Q501 490 501 427Q501 370 479.0 313.0Q457 256 416 215L226 26Q212 12 202.5 6.0Q193 0 175 0Q160 0 150.5 8.5Q141 17 141 32ZM226 122H222L230 127Q231 128 237.5 133.5Q244 139 252.0 146.5Q260 154 268.0 161.0Q276 168 281 173Q304 197 329.5 224.0Q355 251 376.0 281.5Q397 312 410.5 345.5Q424 379 424 416Q424 451 411.0 475.5Q398 500 376.5 515.5Q355 531 326.0 538.0Q297 545 264 545Q261 545 246.5 543.5Q232 542 226 537Z"/><path transform="translate(523,0)" d="M131 257H128Q128 216 129.5 176.5Q131 137 131 95Q131 83 130.5 71.5Q130 60 127.0 50.5Q124 41 116.5 35.5Q109 30 94 30Q66 30 55 59Q50 106 49.0 151.5Q48 197 43 245Q41 259 31.5 272.0Q22 285 22 297Q22 306 28.5 312.0Q35 318 35 329Q35 407 30.5 483.5Q26 560 26 637V654Q33 664 40.0 666.0Q47 668 59 668Q88 668 96.0 650.5Q104 633 105 608L114 342Q115 339 117.5 332.5Q120 326 125 326Q132 326 151.0 329.5Q170 333 191.0 337.5Q212 342 229.0 347.5Q246 353 249 358Q249 365 249.5 383.0Q250 401 250 408Q250 450 249.0 491.0Q248 532 245 574Q245 581 242.0 607.5Q239 634 236.0 665.0Q233 696 230.5 722.5Q228 749 228 756Q227 757 227.0 762.5Q227 768 227 770Q227 783 236.5 789.0Q246 795 257 795Q281 795 292.5 780.0Q304 765 309 743Q310 732 312.0 706.0Q314 680 317.0 650.0Q320 620 322.5 593.5Q325 567 326 557V541Q326 536 327.5 521.5Q329 507 330 502V92Q335 75 336.5 64.0Q338 53 338 38Q338 26 331.5 12.5Q325 -1 309 -1Q295 -1 283.5 6.0Q272 13 263.5 24.0Q255 35 250.0 48.5Q245 62 245 76V282Z"/><path transform="translate(890,0)" d="M32 155Q32 232 34.5 308.0Q37 384 37 462Q37 507 32.5 552.0Q28 597 28 642Q28 656 36.5 666.0Q45 676 59 676Q83 676 95.0 666.0Q107 656 112.0 641.0Q117 626 117.0 607.0Q117 588 117 570Q117 566 117.5 550.0Q118 534 119.0 515.5Q120 497 120.5 481.0Q121 465 121 461V428Q121 363 119.0 299.0Q117 235 117 169V127Q117 122 118.5 113.5Q120 105 121 105H129L366 199Q374 206 380.0 206.5Q386 207 394 207Q399 207 407.0 206.5Q415 206 422.5 203.5Q430 201 435.5 196.5Q441 192 441 183Q441 160 416 143Q384 126 350.0 111.5Q316 97 281 88L276 84Q228 71 186.5 46.0Q145 21 100 0H91Q64 0 51.0 18.0Q38 36 34.0 60.5Q30 85 31.0 111.5Q32 138 32 155Z"/></g></svg>
+    <div class="top__meta">
+      <span>Proposta comercial</span>
+      <span><b>10 nov 2026</b></span>
+      <span>Válida até <b>25 nov 2026</b></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero__to">Para <b>Rede São Paulo de Supermercados</b> · A/C <b>Marco Antonio</b></p>
+      <h1>Um site do tamanho da <em>Rede São Paulo</em>.</h1>
+      <p class="lead">Proposta para refazer o redespsm.com.br: navegação nova, catálogo das marcas próprias, um mapa com as lojas da Rede, uma porta de entrada para fornecedores e um painel simples para vocês atualizarem tudo sem depender de ninguém.</p>
+      <div class="stats" role="list">
+        <div class="stat" role="listitem"><span class="stat__n">7</span><span class="stat__l">redes associadas</span></div>
+        <div class="stat" role="listitem"><span class="stat__n">212</span><span class="stat__l">lojas</span></div>
+        <div class="stat" role="listitem"><span class="stat__n">5</span><span class="stat__l">estados com lojas da Rede</span></div>
+        <div class="stat" role="listitem"><span class="stat__n">36.300</span><span class="stat__l">colaboradores</span></div>
+      </div>
+      <p class="source">Fontes: ABRAS, Pesquisa de Redes 2025, e mapas de lojas do site atual.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">O site hoje</p>
+        <h2>O site atual cumpriu o seu papel. A Rede cresceu além dele.</h2>
+        <p>Revisei as 11 páginas, os 29 produtos cadastrados e a parte técnica do site. Estes são os pontos que mais pesam para quem visita.</p>
+      </div>
+      <div class="issues">
+        <div class="issue"><span class="issue__tag">Conteúdo</span><h3>Informação desencontrada</h3><p>A home fala em 7 associados; Quem Somos e Associados falam em 6, com nomes diferentes. Contatos e CEP também variam entre as páginas.</p></div>
+        <div class="issue"><span class="issue__tag">Catálogo</span><h3>Marcas próprias pela metade</h3><p>O site promete mais de 70 produtos, mas cerca de 28 estão cadastrados. A linha El Mare está "em breve" desde 2016 e a página Diversos está vazia.</p></div>
+        <div class="issue"><span class="issue__tag">Velocidade</span><h3>Lento, principalmente no celular</h3><p>Imagens de até 5 MB fazem a página ficar alguns segundos em branco antes de aparecer.</p></div>
+        <div class="issue"><span class="issue__tag">Segurança</span><h3>Tecnologia sem suporte</h3><p>O servidor roda PHP 7.4, sem atualizações de segurança desde 2022. É isso que obriga a manter filtros e manutenção constantes.</p></div>
+        <div class="issue"><span class="issue__tag">Negócio</span><h3>Fornecedores sem porta de entrada</h3><p>Uma indústria que quer vender para a Rede não encontra por onde começar, nem para produtos nacionais nem para importados.</p></div>
+        <div class="issue"><span class="issue__tag">LGPD e métricas</span><h3>Sem privacidade e sem números</h3><p>O formulário coleta nome e e-mail sem política de privacidade. Não há Analytics para saber quem visita e o que procura.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">O que muda</p>
+        <h2>Uma estrutura pensada para quem procura a Rede.</h2>
+        <p>Três públicos visitam o site: indústrias e fornecedores, consumidores atrás das marcas Uni e Bary, e imprensa e mercado. A navegação nova leva cada um direto ao que precisa.</p>
+      </div>
+      <div class="sitemap">
+        <div class="node node--home"><span class="node__name">Home</span><span class="node__desc">Os números da Rede logo de cara, o que a central faz, as marcas, os associados e dois caminhos claros: "Seja um fornecedor" e "Onde comprar".</span></div>
+        <div class="node"><span class="node__name">A Rede</span><span class="node__desc">História, missão, visão, valores e como a central funciona.</span></div>
+        <div class="node"><span class="node__name">Atuação</span><span class="node__desc">Compras e commodities, importação, marcas próprias e insumos.</span></div>
+        <div class="node"><span class="node__name">Marcas próprias</span><span class="node__desc">Catálogo com filtro e imagem em alta para download.</span><div class="subs"><span>Uni</span><span>Bary</span><span>Bary Premium</span><span>El Mare</span><span>Diversos</span></div></div>
+        <div class="node"><span class="node__name">Associados</span><span class="node__desc">As 7 redes, com cidade-sede, número de lojas e site.</span></div>
+        <div class="node node--new"><span class="node__name">Onde comprar</span><span class="node__desc">O Mapa da Rede: todas as lojas num mapa só.</span></div>
+        <div class="node node--new"><span class="node__name">Seja fornecedor</span><span class="node__desc">O perfil que a Rede procura e um formulário que já separa nacionais de importados.</span></div>
+        <div class="node"><span class="node__name">Contato</span><span class="node__desc">Canais por área e formulário de contato.</span></div>
+        <div class="node"><span class="node__name">Privacidade</span><span class="node__desc">Política de privacidade e aviso de cookies (LGPD).</span></div>
+      </div>
+      <div class="features">
+        <div class="feature"><h3>Painel para vocês editarem</h3><p>Trocar um produto, um banner ou um texto vira tarefa de poucos minutos, num painel visual, sem mexer em código.</p></div>
+        <div class="feature"><h3>Rápido em qualquer tela</h3><p>Desenhado primeiro para o celular, com imagens otimizadas. A página abre em menos de dois segundos numa conexão comum.</p></div>
+        <div class="feature"><h3>Fornecedores qualificados</h3><p>O formulário de fornecedor pergunta categoria, origem e volume, e manda cada contato para a área certa.</p></div>
+        <div class="feature"><h3>Pronto para ser encontrado</h3><p>Textos e páginas preparados para o Google, e links com imagem e título certos quando alguém compartilha no WhatsApp ou no LinkedIn.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap map-grid">
+      <figure class="map-figure">
+        <svg viewBox="0 0 527 418" role="img" aria-label="Mapa de pontos com 106 lojas já marcadas nos mapas atuais do site, espalhadas por São Paulo, Mato Grosso do Sul, Mato Grosso, Distrito Federal e Santa Catarina"><text x="0" y="14" fill="var(--muted-2)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11" letter-spacing="1">ESTADO DE SÃO PAULO</text><line x1="34.8" y1="24" x2="34.8" y2="238" stroke="var(--line)" stroke-width="1"/><line x1="134.1" y1="24" x2="134.1" y2="238" stroke="var(--line)" stroke-width="1"/><line x1="233.5" y1="24" x2="233.5" y2="238" stroke="var(--line)" stroke-width="1"/><line x1="332.9" y1="24" x2="332.9" y2="238" stroke="var(--line)" stroke-width="1"/><line x1="432.2" y1="24" x2="432.2" y2="238" stroke="var(--line)" stroke-width="1"/><line x1="0" y1="16.2" x2="527" y2="16.2" stroke="var(--line)" stroke-width="1"/><line x1="0" y1="124.2" x2="527" y2="124.2" stroke="var(--line)" stroke-width="1"/><line x1="0" y1="232.2" x2="527" y2="232.2" stroke="var(--line)" stroke-width="1"/><circle class="dot" cx="125.8" cy="51.7" r="4.6" fill="var(--c-confianca)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="130.7" cy="54.6" r="4.6" fill="var(--c-confianca)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="125.6" cy="52.1" r="4.6" fill="var(--c-confianca)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="41.7" cy="40.7" r="4.6" fill="var(--c-confianca)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="126.9" cy="49.7" r="4.6" fill="var(--c-confianca)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="180.3" cy="46.1" r="4.6" fill="var(--c-confianca)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="129.5" cy="47.8" r="4.6" fill="var(--c-confianca)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="127.5" cy="52.6" r="4.6" fill="var(--c-confianca)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="154.7" cy="53.4" r="4.6" fill="var(--c-confianca)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="126.5" cy="50.8" r="4.6" fill="var(--c-confianca)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="355.2" cy="195.5" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="388.0" cy="183.6" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="356.9" cy="178.6" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="376.0" cy="173.2" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="388.2" cy="171.2" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="380.4" cy="170.5" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="377.2" cy="174.2" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="379.6" cy="171.0" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="380.8" cy="174.5" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="389.5" cy="169.2" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="377.5" cy="178.4" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="389.0" cy="170.5" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="387.1" cy="168.6" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="382.2" cy="170.9" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="377.2" cy="175.5" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="378.4" cy="176.3" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="349.2" cy="181.5" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="343.6" cy="181.5" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="341.4" cy="182.4" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="352.7" cy="194.1" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="347.7" cy="194.8" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="387.7" cy="169.2" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="377.2" cy="175.6" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="338.8" cy="183.5" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="354.9" cy="185.9" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="352.2" cy="182.8" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="353.5" cy="185.1" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="344.4" cy="177.1" r="4.6" fill="var(--c-lopes)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="296.8" cy="94.3" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="298.8" cy="95.0" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="299.2" cy="98.3" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="303.4" cy="101.6" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="303.5" cy="93.6" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="290.8" cy="97.7" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="301.8" cy="95.0" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="308.4" cy="104.5" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="305.8" cy="106.1" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="318.2" cy="99.4" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="313.2" cy="132.8" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="294.7" cy="95.9" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="323.5" cy="116.7" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="303.6" cy="101.6" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="324.8" cy="105.6" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="315.7" cy="113.5" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="313.3" cy="105.1" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="261.5" cy="134.5" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="265.4" cy="155.5" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="265.6" cy="89.7" r="4.6" fill="var(--c-pague)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="460.7" cy="137.4" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="395.9" cy="177.1" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="417.1" cy="178.6" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="413.7" cy="180.5" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="413.6" cy="180.9" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="411.7" cy="180.7" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="427.8" cy="185.8" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="490.4" cy="191.4" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="488.8" cy="190.7" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="434.1" cy="157.8" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="437.1" cy="154.0" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="435.6" cy="157.2" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="475.4" cy="128.3" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="478.0" cy="126.7" r="4.6" fill="var(--c-shibata)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><text x="39.7" y="26.9" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11.5">Marília</text><text x="128.2" y="38.8" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11.5">Bauru</text><text x="304.9" y="97.4" text-anchor="end" fill="var(--muted)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11.5">Campinas</text><text x="355.6" y="205.6" text-anchor="end" fill="var(--muted)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11.5">São Paulo</text><text x="423.3" y="204.4" text-anchor="start" fill="var(--muted)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11.5">Mogi das Cruzes</text><text x="443.1" y="129.6" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11.5">S. J. dos Campos</text><line x1="0" y1="254" x2="527" y2="254" stroke="var(--line)" stroke-width="1"/><text x="0" y="274" fill="var(--muted-2)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11" letter-spacing="1">FORA DE SP · COMPER · MESMA ESCALA</text><circle class="dot" cx="66.0" cy="327.2" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="66.3" cy="329.8" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="63.3" cy="332.3" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="66.8" cy="331.1" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="68.6" cy="328.2" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="63.5" cy="328.4" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="67.4" cy="326.2" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="68.7" cy="330.8" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="64.4" cy="328.4" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="63.9" cy="331.0" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="62.0" cy="335.7" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="67.5" cy="329.6" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="65.1" cy="326.2" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="64.4" cy="334.9" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="65.7" cy="336.8" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><text x="65.875" y="392" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11.5">Campo Grande · MS</text><text x="65.875" y="408" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="12">15 lojas</text><circle class="dot" cx="197.9" cy="328.9" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="197.0" cy="329.4" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="192.2" cy="335.5" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="199.5" cy="324.4" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="194.9" cy="329.7" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="199.6" cy="327.8" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="200.5" cy="324.3" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="198.8" cy="331.0" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="195.3" cy="326.2" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="195.4" cy="334.4" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="195.8" cy="329.7" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><text x="197.625" y="392" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11.5">Cuiabá · MT</text><text x="197.625" y="408" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="12">11 lojas</text><circle class="dot" cx="334.0" cy="326.9" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="315.5" cy="326.8" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="318.0" cy="350.0" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="317.2" cy="332.3" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="346.0" cy="309.8" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="325.8" cy="355.2" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><circle class="dot" cx="320.7" cy="329.4" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><text x="329.375" y="392" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11.5">Brasília · DF</text><text x="329.375" y="408" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="12">7 lojas</text><circle class="dot" cx="462.0" cy="330.4" r="4.6" fill="var(--c-comper)" fill-opacity="0.9" stroke="var(--bg)" stroke-width="1.2"/><text x="461.125" y="392" text-anchor="middle" fill="var(--muted)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11.5">Itajaí · SC</text><text x="461.125" y="408" text-anchor="middle" fill="var(--ink)" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="12">1 loja</text></svg>
+        <figcaption>106 lojas tiradas dos 6 mapas do Google que estão hoje na página "Loja mais próxima". Proença e Jaú Serve ainda não têm lojas marcadas.</figcaption>
+      </figure>
+      <div class="map-copy">
+        <p class="eyebrow">Mapa da Rede</p>
+        <h2>Vocês já têm os dados. Falta juntar.</h2>
+        <p style="margin-top:22px">Hoje o site mostra <strong>6 mapas do Google separados</strong>, um por rede, pesados e cada um com um visual. O novo site junta tudo em <strong>um mapa só</strong>, leve, com a cor de cada rede, filtro por rede e lista por cidade.</p>
+        <p>Para um fornecedor, ver mais de 200 pontos espalhados por cinco estados diz mais sobre o porte da Rede do que qualquer texto. Para o consumidor, responde onde comprar Uni e Bary.</p>
+        <ul class="legend"><li><i style="background:var(--c-comper)"></i><span>Comper</span><b>34</b></li><li><i style="background:var(--c-lopes)"></i><span>Lopes</span><b>28</b></li><li><i style="background:var(--c-pague)"></i><span>Pague Menos</span><b>20</b></li><li><i style="background:var(--c-shibata)"></i><span>Shibata</span><b>14</b></li><li><i style="background:var(--c-confianca)"></i><span>Confiança</span><b>10</b></li><li class="off"><i style="border:1.5px solid var(--muted-2)"></i><span>Proença e Jaú Serve</span><b>a marcar</b></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Tecnologia</p>
+        <h2>Menos manutenção, nenhum custo fixo novo.</h2>
+      </div>
+      <div class="tech">
+        <div><h3>Sem WordPress</h3><p>O site novo é estático: páginas prontas, sem banco de dados e sem plugins para atualizar. Sem PHP no servidor, deixa de existir a manutenção de segurança que vocês fazem hoje.</p></div>
+        <div><h3>Hospedagem sem mensalidade</h3><p>O site fica num serviço de hospedagem gratuito, numa conta em nome da própria Rede. Nada fica preso a mim nem a outro fornecedor.</p></div>
+        <div><h3>Domínio e e-mail como estão</h3><p>O redespsm.com.br e os e-mails continuam com o parceiro atual de vocês. Só o endereço do site passa a apontar para o novo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="investimento">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Investimento</p>
+        <h2>Preço fechado, aberto tarefa por tarefa.</h2>
+        <p>Cada etapa mostra as horas previstas para cada entrega, a R$ 150 por hora. O valor total é fechado: se alguma tarefa levar mais tempo, o custo é meu.</p>
+      </div>
+      <div class="invest">
+        <div class="stages"><details class="stage" open><summary><h3>Imersão e arquitetura</h3><span class="stage__sum"><span>11 h</span>R$ 1.650</span><p class="stage__why">Entender a Rede antes de desenhar qualquer tela.</p></summary><table class="tasks"><tbody><tr><td>Reunião de briefing e alinhamento de objetivos</td><td>2 h</td></tr><tr><td>Auditoria do site atual e inventário de conteúdo</td><td>3 h</td></tr><tr><td>Benchmark de outras centrais e redes de supermercado</td><td>2 h</td></tr><tr><td>Mapa do site e arquitetura de navegação</td><td>1 h</td></tr><tr><td>Wireframes das páginas principais</td><td>3 h</td></tr></tbody></table></details><details class="stage"><summary><h3>Design de interface</h3><span class="stage__sum"><span>25 h</span>R$ 3.750</span><p class="stage__why">A cara nova da Rede, no computador e no celular.</p></summary><table class="tasks"><tbody><tr><td>Direção visual: tipografia, cores, grid e estilo de imagens</td><td>4 h</td></tr><tr><td>Home, versões desktop e celular</td><td>8 h</td></tr><tr><td>Páginas internas: A Rede, Atuação, Marcas, Catálogo, Associados, Seja Fornecedor e Contato</td><td>9 h</td></tr><tr><td>Duas rodadas de ajustes após a aprovação de vocês</td><td>4 h</td></tr></tbody></table></details><details class="stage"><summary><h3>Desenvolvimento</h3><span class="stage__sum"><span>33 h</span>R$ 4.950</span><p class="stage__why">Transformar o design em site, com painel de edição.</p></summary><table class="tasks"><tbody><tr><td>Estrutura do projeto e componentes base (menu, rodapé, botões, cards)</td><td>6 h</td></tr><tr><td>Montagem da home</td><td>5 h</td></tr><tr><td>Montagem das páginas internas</td><td>7 h</td></tr><tr><td>Catálogo de produtos com filtro por marca e download de imagem</td><td>5 h</td></tr><tr><td>Formulários de contato e de fornecedor, com envio por área</td><td>3 h</td></tr><tr><td>Painel de edição para produtos, banners e textos</td><td>4 h</td></tr><tr><td>Testes em navegadores, celulares e tablets</td><td>3 h</td></tr></tbody></table></details><details class="stage"><summary><h3>Mapa da Rede</h3><span class="stage__sum"><span>11 h</span>R$ 1.650</span><p class="stage__why">Um mapa único no lugar dos 6 mapas atuais.</p></summary><table class="tasks"><tbody><tr><td>Mapa único com pinos identificados por rede</td><td>4 h</td></tr><tr><td>Filtro por rede e lista de lojas por cidade</td><td>3 h</td></tr><tr><td>Base de dados em planilha, ligada ao painel de edição</td><td>2 h</td></tr><tr><td>Ajustes de visual e uso no celular</td><td>2 h</td></tr></tbody></table></details><details class="stage"><summary><h3>Conteúdo</h3><span class="stage__sum"><span>12 h</span>R$ 1.800</span><p class="stage__why">Textos certos e imagens leves.</p></summary><table class="tasks"><tbody><tr><td>Revisão e atualização dos textos institucionais</td><td>4 h</td></tr><tr><td>Tratamento e otimização de até 70 imagens de produto</td><td>5 h</td></tr><tr><td>Cadastro e migração dos produtos para o novo catálogo</td><td>3 h</td></tr></tbody></table></details><details class="stage"><summary><h3>Publicação e treinamento</h3><span class="stage__sum"><span>6 h</span>R$ 900</span><p class="stage__why">Colocar no ar e deixar vocês com autonomia.</p></summary><table class="tasks"><tbody><tr><td>SEO técnico e pré-visualização de links (Google, WhatsApp, LinkedIn)</td><td>2 h</td></tr><tr><td>Google Analytics, política de privacidade e aviso de cookies</td><td>2 h</td></tr><tr><td>Publicação, apontamento do domínio e redirecionamento das páginas antigas</td><td>1 h</td></tr><tr><td>Treinamento do painel (1 h, gravado)</td><td>1 h</td></tr></tbody></table></details></div>
+        <div class="receipt-wrap">
+          <div class="receipt" aria-label="Resumo do investimento">
+            <div class="receipt__head">
+              <strong>DIEGO HENRIQUE LUCIANO</strong>
+              <span>Design e desenvolvimento</span>
+              <span>Proposta · Rede São Paulo · 10/11/2026</span>
+            </div>
+            <ul class="receipt__rows"><li><span class="d">Imersão e arquitetura</span><span class="h">11h</span><span class="v">R$ 1.650</span></li><li><span class="d">Design de interface</span><span class="h">25h</span><span class="v">R$ 3.750</span></li><li><span class="d">Desenvolvimento</span><span class="h">33h</span><span class="v">R$ 4.950</span></li><li><span class="d">Mapa da Rede</span><span class="h">11h</span><span class="v">R$ 1.650</span></li><li><span class="d">Conteúdo</span><span class="h">12h</span><span class="v">R$ 1.800</span></li><li><span class="d">Publicação e treinamento</span><span class="h">6h</span><span class="v">R$ 900</span></li></ul>
+            <div class="receipt__total">
+              <div class="row small"><span>Horas</span><span>98 h × R$ 150</span></div>
+              <div class="row big"><span>TOTAL</span><span>R$ 14.700</span></div>
+              <div class="row small"><span>40% no aceite</span><span>R$ 5.880</span></div>
+              <div class="row small"><span>30% no design aprovado</span><span>R$ 4.410</span></div>
+              <div class="row small"><span>30% na publicação</span><span>R$ 4.410</span></div>
+            </div>
+            <div class="receipt__foot">
+              Hospedagem: R$ 0/mês<br>Contrato anual: não precisa
+              <div class="barcode" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="extras-title">Opcionais, cobrados à parte</h3>
+      <div class="table-scroll">
+        <table class="extras">
+          <thead><tr><th>Item</th><th class="num">Horas</th><th class="num">Valor</th></tr></thead>
+          <tbody>
+            <tr><td>Coleta e organização dos dados das lojas<small>Importar as 106 lojas já marcadas nos mapas atuais, completar até as 212 e conferir endereços. Não é cobrado se cada associado enviar a sua lista em planilha.</small></td><td class="num">7 h</td><td class="num">R$ 1.050</td></tr>
+            <tr><td>Localizador completo<small>Acrescenta ao Mapa da Rede a busca por CEP, o botão "lojas perto de mim" e o "Como chegar" pelo Google Maps ou Waze.</small></td><td class="num">10 h</td><td class="num">R$ 1.500</td></tr>
+            <tr><td>Versão em inglês<small>Útil para fornecedores internacionais da área de importação. A tradução é fornecida por vocês ou cotada à parte.</small></td><td class="num">16 h</td><td class="num">R$ 2.400</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Prazo</p>
+        <h2>De 6 a 8 semanas, do briefing ao ar.</h2>
+      </div>
+      <ol class="timeline">
+        <li><span class="wk">Semana 1</span><h3>Imersão</h3><p>Briefing, auditoria do conteúdo e mapa do site aprovado.</p></li>
+        <li><span class="wk">Semanas 2 e 3</span><h3>Design</h3><p>Direção visual, home e páginas internas para aprovação.</p></li>
+        <li><span class="wk">Semanas 4 a 6</span><h3>Construção</h3><p>Desenvolvimento, catálogo, Mapa da Rede e conteúdo.</p></li>
+        <li><span class="wk">Semana 7</span><h3>Publicação</h3><p>Testes, site no ar, redirecionamentos e treinamento.</p></li>
+        <li><span class="wk">Semana 8</span><h3>Folga</h3><p>Margem para ajustes finos e atrasos de conteúdo.</p></li>
+      </ol>
+      <p class="note">O prazo começa a contar quando os textos, as imagens e os acessos chegarem.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two">
+      <div>
+        <h3 class="col-title">Condições</h3>
+        <dl class="terms">
+          <div><dt>Pagamento</dt><dd>40% no aceite, 30% na aprovação do design e 30% na publicação.</dd></div>
+          <div><dt>Escopo</dt><dd>O valor cobre o que está listado acima.<small>Páginas ou funções novas pedidas no meio do projeto são orçadas à parte, antes de começar.</small></dd></div>
+          <div><dt>Garantia</dt><dd>30 dias após a publicação para corrigir qualquer erro, sem custo.</dd></div>
+          <div><dt>Depois da entrega</dt><dd>Sem contrato anual. Vocês chamam quando precisarem.<small>Hora avulsa a R$ 180, ou pacote de 10 h por R$ 1.500, com validade de 12 meses.</small></dd></div>
+          <div><dt>Propriedade</dt><dd>Código, design, painel e hospedagem ficam em nome da Rede São Paulo.</dd></div>
+          <div><dt>Validade</dt><dd>Esta proposta vale até 25/11/2026.</dd></div>
+        </dl>
+      </div>
+      <div>
+        <h3 class="col-title">O que preciso de vocês</h3>
+        <ul class="checklist">
+          <li><div>Lista atual de associados<span>Quais redes fazem parte hoje, com os logos em boa resolução.</span></div></li>
+          <li><div>Produtos de marca própria<span>Lista atualizada e imagens em alta de cada produto.</span></div></li>
+          <li><div>Acesso ao domínio<span>Quem tem o login do Registro.br e do painel de DNS.</span></div></li>
+          <li><div>Lista de lojas por rede<span>Uma planilha por associado, com endereço de cada loja.</span></div></li>
+          <li><div>Contatos oficiais<span>Responsável e e-mail de cada área: nacionais, importados, fornecedores.</span></div></li>
+          <li><div>Manual de marca<span>Logo da Rede em vetor e cores oficiais, se houver.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom:0">
+    <div class="wrap about">
+      <svg class="logo-lg" viewBox="12 27 75 46" role="img" aria-label="DHL"><g fill="currentColor" transform="translate(14.0404 71.1653) scale(0.053313 -0.053313)"><path transform="translate(0,0)" d="M141 32Q141 41 147.5 48.0Q154 55 154 63Q154 65 150.0 68.0Q146 71 145 72Q135 87 134.0 106.0Q133 125 133 142Q133 234 134.0 324.0Q135 414 135 506Q125 506 116.0 501.5Q107 497 97.0 491.5Q87 486 76.0 481.5Q65 477 52 477H36Q34 480 26.0 482.5Q18 485 18 489V519Q23 522 26.5 527.5Q30 533 32 537L133 587L137 592Q135 620 140.0 637.0Q145 654 175 654Q183 654 192.5 651.0Q202 648 210.5 643.0Q219 638 223.5 630.0Q228 622 226 612Q276 610 325.0 604.5Q374 599 413.0 580.5Q452 562 476.5 526.0Q501 490 501 427Q501 370 479.0 313.0Q457 256 416 215L226 26Q212 12 202.5 6.0Q193 0 175 0Q160 0 150.5 8.5Q141 17 141 32ZM226 122H222L230 127Q231 128 237.5 133.5Q244 139 252.0 146.5Q260 154 268.0 161.0Q276 168 281 173Q304 197 329.5 224.0Q355 251 376.0 281.5Q397 312 410.5 345.5Q424 379 424 416Q424 451 411.0 475.5Q398 500 376.5 515.5Q355 531 326.0 538.0Q297 545 264 545Q261 545 246.5 543.5Q232 542 226 537Z"/><path transform="translate(523,0)" d="M131 257H128Q128 216 129.5 176.5Q131 137 131 95Q131 83 130.5 71.5Q130 60 127.0 50.5Q124 41 116.5 35.5Q109 30 94 30Q66 30 55 59Q50 106 49.0 151.5Q48 197 43 245Q41 259 31.5 272.0Q22 285 22 297Q22 306 28.5 312.0Q35 318 35 329Q35 407 30.5 483.5Q26 560 26 637V654Q33 664 40.0 666.0Q47 668 59 668Q88 668 96.0 650.5Q104 633 105 608L114 342Q115 339 117.5 332.5Q120 326 125 326Q132 326 151.0 329.5Q170 333 191.0 337.5Q212 342 229.0 347.5Q246 353 249 358Q249 365 249.5 383.0Q250 401 250 408Q250 450 249.0 491.0Q248 532 245 574Q245 581 242.0 607.5Q239 634 236.0 665.0Q233 696 230.5 722.5Q228 749 228 756Q227 757 227.0 762.5Q227 768 227 770Q227 783 236.5 789.0Q246 795 257 795Q281 795 292.5 780.0Q304 765 309 743Q310 732 312.0 706.0Q314 680 317.0 650.0Q320 620 322.5 593.5Q325 567 326 557V541Q326 536 327.5 521.5Q329 507 330 502V92Q335 75 336.5 64.0Q338 53 338 38Q338 26 331.5 12.5Q325 -1 309 -1Q295 -1 283.5 6.0Q272 13 263.5 24.0Q255 35 250.0 48.5Q245 62 245 76V282Z"/><path transform="translate(890,0)" d="M32 155Q32 232 34.5 308.0Q37 384 37 462Q37 507 32.5 552.0Q28 597 28 642Q28 656 36.5 666.0Q45 676 59 676Q83 676 95.0 666.0Q107 656 112.0 641.0Q117 626 117.0 607.0Q117 588 117 570Q117 566 117.5 550.0Q118 534 119.0 515.5Q120 497 120.5 481.0Q121 465 121 461V428Q121 363 119.0 299.0Q117 235 117 169V127Q117 122 118.5 113.5Q120 105 121 105H129L366 199Q374 206 380.0 206.5Q386 207 394 207Q399 207 407.0 206.5Q415 206 422.5 203.5Q430 201 435.5 196.5Q441 192 441 183Q441 160 416 143Q384 126 350.0 111.5Q316 97 281 88L276 84Q228 71 186.5 46.0Q145 21 100 0H91Q64 0 51.0 18.0Q38 36 34.0 60.5Q30 85 31.0 111.5Q32 138 32 155Z"/></g></svg>
+      <div>
+        <p class="eyebrow">Quem assina</p>
+        <h2>Diego Henrique Luciano</h2>
+        <p style="margin-top:20px">São 25 anos trabalhando com marcas, do conceito da identidade à construção de sites e plataformas, até a gestão de marketing e e-commerce. Cuido do projeto de ponta a ponta, sem intermediários.</p>
+        <p>Trabalhos recentes, incluindo marcas, sites e plataformas, estão no portfólio.</p>
+        <div class="contact">
+          <div><span>Portfólio</span><a href="https://diegoluciano.com/">diegoluciano.com</a></div>
+          <div><span>WhatsApp</span>(31) 97563-0117</div>
+        </div>
+        <a class="cta" href="https://wa.me/5531975630117?text=Ol%C3%A1%20Diego%2C%20recebi%20a%20proposta%20do%20site%20da%20Rede%20S%C3%A3o%20Paulo." target="_blank" rel="noopener">Conversar sobre a proposta →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Proposta para Rede São Paulo de Supermercados</span>
+    <span>10/11/2026 · válida até 25/11/2026</span>
+  </div>
+</footer>
+</body>
+</html>
